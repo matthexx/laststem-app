@@ -1,19 +1,43 @@
 "use client"
 import Link from "next/link"
-import React from "react"
-import { useRouter } from "next/navigation"
-import {axios} from "axios";
+import React, {useEffect} from "react"
+import {useRouter } from "next/navigation"
+import axios from "axios"
 
 
 export default function LoginPage(){
+    const router = useRouter();
     const [user, setUser] = React.useState({
         email: "",
         password: ""
     })
 
-    const onLogin = async () =>{
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [loading, setLoading] = React.useState(false);
 
-    }
+    const onLogin = async (e) => {
+        e.preventDefault(); // Prevent the form from submitting
+      
+        try {
+          setLoading(true);
+          await axios.post("/api/users/login", user);
+          console.log("Login successful");
+          // Redirect to the profile page
+          router.push("/dashboard/profile");
+        } catch (error) {
+          console.log("Login Failed", error.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+    useEffect(()=>{
+        if(user.email.length > 0 && user.password.length > 0){
+            setButtonDisabled(false);
+        }else{
+            setButtonDisabled(true);
+        }
+    }, [user])
 
     return(
         <div className="flex min-h-full flex-1 flex-row px-6 py-12 lg:px-8">
@@ -24,7 +48,7 @@ export default function LoginPage(){
                     // alt="Last STEM"
                 />
                 <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-                    Login to your account
+                    {loading ? "Processing" : "Login to your account"}
                 </h2>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">    
@@ -98,6 +122,6 @@ export default function LoginPage(){
 
     </div>
 
-    )
+         )
     
     }

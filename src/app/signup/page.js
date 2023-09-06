@@ -1,20 +1,41 @@
 "use client"
 import Link from "next/link"
-import React from "react"
+import React, {useState, useEffect} from "react"
 import { useRouter } from "next/navigation"
-import {axios} from "axios";
+import axios from "axios";
+import toast from "react-hot-toast"
 
 
 export default function SignupPage(){
+    const router = useRouter();
     const [user, setUser] = React.useState({
         email: "",
         password: "",
         username: ""
     })
-
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [loading, setLoading] = useState(false);
     const onSignup = async () =>{
+        try {
+            setLoading(true);
+            const response = await axios.post("/api/users/signup", user)
+            toast.success("Signup Success");
+            router.push("/login")
+        } catch (error) {
+            toast.error(error.message); 
+        }finally{
+            setLoading(false);
 
+        }
     }
+
+    useEffect(()=>{
+        if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0){
+            setButtonDisabled(false);
+        }else{
+            setButtonDisabled(true);
+        }
+    }, [user]);
 
     return(
         <div className="flex min-h-full flex-1 flex-row px-6 py-12 lg:px-8">
@@ -25,7 +46,7 @@ export default function SignupPage(){
                     // alt="Last STEM"
                 />
                 <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-                    Sign up to create your account
+                    {loading ? "Processing..." : "Sign up to create your account"}
                 </h2>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">    
@@ -76,7 +97,7 @@ export default function SignupPage(){
                         Password
                     </label>
                     <div className="text-sm">
-                        <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                        <a href="/" className="font-semibold text-indigo-600 hover:text-indigo-500">
                         Forgot password?
                         </a>
                     </div>
@@ -102,7 +123,7 @@ export default function SignupPage(){
                     type="submit"
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                    Signup here
+                    {buttonDisabled ? "Can't wait!" : "Signup here"}
                     </button>
                 </div>
                 </form>
