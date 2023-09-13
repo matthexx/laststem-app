@@ -1,0 +1,80 @@
+/* Navigation.module.css */
+
+.navigation {
+    background-color: #ededed;
+    display: flex;
+    align-items: center;
+    padding: 26px; /* Updated padding */
+    justify-content: space-between; /* To divide into 3 sections */
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoLink {
+    font-weight: bold;
+    font-size: 24px; /* Increase font size for the logo */
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Center the menu */
+  }
+  
+  .menu li {
+    margin-right: 30px;
+  }
+  
+  .navLink {
+    font-weight: bold; /* Make menu items bold */
+    font-size: 18px; /* Increase menu font size */
+    color: #000;
+    text-decoration: none;
+    transition: color 0.2s; /* Smooth color transition */
+  }
+  
+  .navLink:hover {
+    color: #3164F4; /* Hover color */
+  }
+  
+  /* Active link style */
+  .activeNavLink {
+    color: #3164F4; /* Blue color for the active link */
+  }
+  
+  .buttons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .loginButton {
+    background-color: transparent;
+    color: #000;
+    font-weight: bold; /* Make menu items bold */
+    font-size: 16px;
+    padding: 10px 15px; /* Increased padding for buttons */
+    text-decoration: none;
+  }
+  
+  .signupButton {
+    background-color: #3164F4; /* Blue background color */
+    color: #fff;
+    font-weight: bold; /* Make menu items bold */
+    font-size: 16px;
+    padding: 10px 15px; /* Increased padding for buttons */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s; /* Smooth transition */
+  }
+  
+  .signupButton:hover {
+    background-color: #214b9f; /* Darker blue background color on hover */
+  }
+  

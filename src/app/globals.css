@@ -18,5 +18,137 @@
 
 body {
     color: #000;
-    background-color: #fff;
+    background-color: #ededed;
 }
+
+/* Home css */
+
+
+.hero {
+  display: flex; /* Use flex display */
+  justify-content: space-between; /* Add space between text and image */
+  align-items: center; /* Vertically align text and image */
+}
+
+.heroText {
+  flex: 1;
+  font-size: 1.4rem;
+  padding: 0 20px;
+}
+
+h1 {
+  font-size: 3rem;
+  position: relative;
+}
+
+.typingText {
+  color: #3164F4;
+  overflow: hidden;
+  /* border-right: 2px solid #3164F4; */
+  white-space: nowrap;
+  animation: typing 4s steps(40, end), blink-caret 0.5s step-end infinite;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* styles not working */
+
+.typingText::after {
+  content: '|'; /* Set the cursor content to a vertical bar (|) */
+  font-weight: bold;  
+  animation: blink-caret 0.5s step-end infinite;
+}
+
+.heroImageContainer {
+  margin-left: 40px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  overflow: hidden;
+  width: 500px;
+  height: 500px;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+@keyframes typing {
+  from,
+  to {
+    border-right-color: transparent;
+  }
+}
+
+p:last-child {
+  margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tryButton {
+  background-color: #3164F4;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.tryButton:hover {
+  background-color: #214b9f;
+}
+
+.worksButton {
+  border: 1px solid #ccc;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.worksButton:hover {
+  background-color: #fff;
+  color: #3164F4;
+}
+
+
+/* Trusted section */
+.trustedSection {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.trustedSection h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.companyLogos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.companyLogo {
+  width: 15%;
+  padding: 0px;
+  filter: grayscale(100%); /* Style logos to appear in grayscale */
+}
+
+.companyLogo img {
+  width:100%;
+  height: auto;
+}
+
