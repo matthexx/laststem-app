@@ -3,7 +3,7 @@ import Link from "next/link"
 import React, {useState, useEffect} from "react"
 import { useRouter } from "next/navigation"
 import axios from "axios";
-import toast from "react-hot-toast"
+// import toast from "react-hot-toast"
 
 
 export default function SignupPage(){
@@ -19,10 +19,12 @@ export default function SignupPage(){
         try {
             setLoading(true);
             const response = await axios.post("/api/users/signup", user)
-            toast.success("Signup Success");
+            // toast.success("Signup Success");
+            console.log("Signup Success");
             router.push("/login")
         } catch (error) {
-            toast.error(error.message); 
+            // toast.error(error.message); 
+            console.log("error")
         }finally{
             setLoading(false);
 
@@ -67,7 +69,7 @@ export default function SignupPage(){
                         onChange={(e)=>setUser({
                             ...user, username: e.target.value
                         })}
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     </div>
                 </div>
@@ -86,7 +88,7 @@ export default function SignupPage(){
                         onChange={(e)=>setUser({
                             ...user, email: e.target.value
                         })}
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     </div>
                 </div>
@@ -113,7 +115,7 @@ export default function SignupPage(){
                         onChange={(e)=>setUser({
                             ...user, password: e.target.value
                         })}
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
                     </div>
                 </div>
