@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import styles from './Navigation.module.css';
-import { useRouter } from 'next/router';
+import React, { useState } from "react";
+import Link from "next/link";
+import styles from "./Navigation.module.css";
+import { useRouter } from "next/router";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -15,10 +15,14 @@ const Navigation = () => {
 
   return (
     <nav className={`${styles.navigation} bg-gray-140`}>
-      <div className={`container mx-auto p-4 flex justify-between items-center`}>
+      <div
+        className={`container mx-auto p-4 flex justify-between items-center`}
+      >
         <div className="flex items-center space-x-4">
           <Link href="/">
-            <strong className={`text-2xl font-bold ${styles.logoLink}`}>Last-STEM</strong>
+            <strong className={`text-2xl font-bold ${styles.logoLink}`}>
+              Last-STEM
+            </strong>
           </Link>
         </div>
 
@@ -28,7 +32,9 @@ const Navigation = () => {
               <Link href="/">
                 <span
                   className={`${
-                    useRouter.pathname === '/' ? styles.activeNavLink : styles.navLink
+                    useRouter.pathname === "/"
+                      ? styles.activeNavLink
+                      : styles.navLink
                   }`}
                 >
                   Home
@@ -39,7 +45,9 @@ const Navigation = () => {
               <Link href="/pricing">
                 <span
                   className={`${
-                    useRouter.pathname === '/pricing' ? styles.activeNavLink : styles.navLink
+                    useRouter.pathname === "/pricing"
+                      ? styles.activeNavLink
+                      : styles.navLink
                   }`}
                 >
                   Pricing
@@ -50,7 +58,9 @@ const Navigation = () => {
               <Link href="/about">
                 <span
                   className={`${
-                    useRouter.pathname === '/about' ? styles.activeNavLink : styles.navLink
+                    useRouter.pathname === "/about"
+                      ? styles.activeNavLink
+                      : styles.navLink
                   }`}
                 >
                   About Us
@@ -61,7 +71,9 @@ const Navigation = () => {
               <Link href="/contact">
                 <span
                   className={`${
-                    useRouter.pathname === '/contact' ? styles.activeNavLink : styles.navLink
+                    useRouter.pathname === "/contact"
+                      ? styles.activeNavLink
+                      : styles.navLink
                   }`}
                 >
                   Contact
@@ -71,26 +83,25 @@ const Navigation = () => {
           </ul>
         </div>
 
-      <div className={styles.buttons}>
-      <Link href="/login">
-        <span className={`hidden lg:inline-block ${styles.loginButton}`}>
-          Login
-        </span>
-      </Link>
-      <Link href="/signup">
-        <span className={`hidden lg:inline-block ${styles.signupButton}`}>
-          Signup
-        </span>
-      </Link>
-    </div>
-
+        <div className={styles.buttons}>
+          <Link href="/login">
+            <span className={`hidden lg:inline-block ${styles.loginButton}`}>
+              Login
+            </span>
+          </Link>
+          <Link href="/signup">
+            <span className={`hidden lg:inline-block ${styles.signupButton}`}>
+              Signup
+            </span>
+          </Link>
+        </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={toggleMobileMenu}
             className={`${
-              mobileMenuOpen ? 'text-blue-600' : 'text-gray-600'
+              mobileMenuOpen ? "text-blue-600" : "text-gray-600"
             } hover:text-blue-600 focus:outline-none`}
           >
             <svg
@@ -127,7 +138,7 @@ const Navigation = () => {
             <Link href="/">
               <span
                 className={`block py-2 ${
-                  useRouter.pathname === '/' ? 'text-blue-600' : 'text-gray-600'
+                  useRouter.pathname === "/" ? "text-blue-600" : "text-gray-600"
                 } hover:text-blue-600`}
               >
                 Home
@@ -138,7 +149,9 @@ const Navigation = () => {
             <Link href="/pricing">
               <span
                 className={`block py-2 ${
-                  useRouter.pathname === '/pricing' ? 'text-blue-600' : 'text-gray-600'
+                  useRouter.pathname === "/pricing"
+                    ? "text-blue-600"
+                    : "text-gray-600"
                 } hover:text-blue-600`}
               >
                 Pricing
@@ -149,7 +162,9 @@ const Navigation = () => {
             <Link href="/about">
               <span
                 className={`block py-2 ${
-                  useRouter.pathname === '/about' ? 'text-blue-600' : 'text-gray-600'
+                  useRouter.pathname === "/about"
+                    ? "text-blue-600"
+                    : "text-gray-600"
                 } hover:text-blue-600`}
               >
                 About Us
@@ -160,7 +175,9 @@ const Navigation = () => {
             <Link href="/contact">
               <span
                 className={`block py-2 ${
-                  useRouter.pathname === '/contact' ? 'text-blue-600' : 'text-gray-600'
+                  useRouter.pathname === "/contact"
+                    ? "text-blue-600"
+                    : "text-gray-600"
                 } hover:text-blue-600`}
               >
                 Contact
@@ -172,19 +189,22 @@ const Navigation = () => {
             <Link href="/login">
               <span
                 className={`block py-2 ${
-                  useRouter.pathname === '/login' ? 'text-blue-600' : 'text-gray-600'
+                  useRouter.pathname === "/login"
+                    ? "text-blue-600"
+                    : "text-gray-600"
                 } hover:text-blue-600`}
               >
                 Login
-
-                </span>
+              </span>
             </Link>
           </li>
           <li>
             <Link href="/signup">
               <span
                 className={`block py-2 ${
-                  useRouter.pathname === '/signup' ? 'text-blue-600' : 'text-gray-600'
+                  useRouter.pathname === "/signup"
+                    ? "text-blue-600"
+                    : "text-gray-600"
                 } hover:text-blue-600`}
               >
                 Signup
@@ -198,5 +218,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-             
