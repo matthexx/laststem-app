@@ -1,0 +1,82 @@
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.features > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid red; */
+  min-height: 80vh;
+  width: 85%;
+}
+
+.features > div > div {
+  /* border: 1px solid red; */
+  width: 50%;
+}
+
+/* .features > div .left {
+  padding-left: 3em;
+} */
+
+/* .features > div .right {
+  border: 1px solid red;
+} */
+
+.features > div .right h3 {
+  font-size: 0.75em;
+  color: gray;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  /* margin-bottom: 1; */
+}
+.features > div .right h2 {
+  font-size: 1.9em;
+  font-weight: 600;
+  width: 80%;
+  margin-block: 0.5em;
+}
+
+.features > div .right p {
+  margin-bottom: 1em;
+  width: 45%;
+  font-size: 0.85em;
+}
+
+.features > div .right button {
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* .features .one-for-all .left {
+  padding-left: 5em;
+} */
+
+.features .one-for-all .right {
+  padding-left: 4em;
+}
+
+.features .cost-saver {
+  display: flex;
+  flex-direction: row-reverse;
+  /* border: 1px solid red; */
+}
+
+/* .features .cost-saver .right {
+  padding-left: 5em;
+} */
+
+.features .cost-saver .right h2 {
+  width: 50%;
+}
+
+.features .cost-saver .right p {
+  width: 70%;
+}

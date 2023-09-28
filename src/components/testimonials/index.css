@@ -1,0 +1,116 @@
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+
+  min-height: 180vh;
+  /* border: 1px solid red; */
+}
+
+.testimonials .head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+}
+
+.testimonials .head h2 {
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.testimonials .testimonials-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  /* border: 1px solid red; */
+  /* padding-inline: 5em; */
+  width: 85%;
+  margin-bottom: 8em;
+}
+
+.testimonials .testimonials-container .testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
+  background: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 4px 10px #bbbaba;
+  /* border: 1px solid red; */
+}
+
+.testimonials .testimonials-container .testimonial:hover {
+  /* box-shadow: 0 4px 10px #bbbaba; */
+  transform: scale(1.1);
+}
+
+.testimonials .testimonials-container .testimonial:nth-child(2) {
+  /* border: 1px solid green; */
+  margin-inline: 3em;
+}
+
+.testimonials .testimonials-container .testimonial h2 {
+  font-size: 1.1em;
+  width: 90%;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.2em;
+}
+
+.testimonials .testimonials-container .testimonial h3 {
+  font-size: 1.2em;
+  margin-top: 1em;
+  font-weight: 600;
+}
+
+.testimonials .testimonials-container .testimonial p {
+  color: grey;
+  font-size: 0.9em;
+}
+
+.testimonials .get-started {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+  /* border: 1px solid red; */
+  background: #fff;
+  border-radius: 20px;
+  padding-inline: 3em;
+  padding-block: 3em;
+}
+
+.testimonials .get-started > * {
+  width: 50%;
+}
+
+.testimonials .get-started h2 {
+  font-size: 2.5em;
+  width: 70%;
+  font-weight: 600;
+}
+
+.testimonials .get-started p {
+  padding-block: 1em 3em;
+}
+
+.testimonials .get-started button {
+  background: #3164f4;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  width: 10em;
+  font-weight: 600;
+  font-size: 0.9em;
+}
