@@ -4,23 +4,25 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useSignUp } from "@/hooks/useSignUp";
 
 export default function SignupPage() {
   const router = useRouter();
+  const { signup } = useSignUp();
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-    username: "",
+    name: "",
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = useState(false);
   const onSignup = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/signup", user);
-      console.log(response.data);
+      const response = await signup(user);
+      // console.log(response.data);
       //   toast.success("Signup Success");
-      return router.push("/login");
+      // return router.push("/dashboard/profile");
     } catch (error) {
       // toast.error(error.message);
     } finally {
@@ -32,7 +34,7 @@ export default function SignupPage() {
     if (
       user.email.length > 0 &&
       user.password.length > 0 &&
-      user.username.length > 0
+      user.name.length > 0
     ) {
       setButtonDisabled(false);
     } else {
@@ -46,7 +48,7 @@ export default function SignupPage() {
         <img
           className="mx-auto h-10 w-auto"
           src=""
-        // alt="Last STEM"
+          // alt="Last STEM"
         />
         <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
           {loading ? "Processing..." : "Sign up to create your account"}
@@ -56,23 +58,23 @@ export default function SignupPage() {
           <form className="space-y-6" action="#" method="POST">
             <div>
               <label
-                htmlFor="username"
+                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 User Name
               </label>
               <div className="mt-2">
                 <input
-                  id="username"
-                  name="username"
+                  id="name"
+                  name="name"
                   type="text"
-                  placeholder="username"
+                  placeholder="name"
                   required
-                  value={user.username}
+                  value={user.name}
                   onChange={(e) =>
                     setUser({
                       ...user,
-                      username: e.target.value,
+                      name: e.target.value,
                     })
                   }
                   className="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
