@@ -3,6 +3,7 @@
 import Features from "@/components/features";
 import Footer from "@/components/footer";
 import Steps from "@/components/steps";
+import Teachers from "@/components/teachers";
 import Testimonials from "@/components/testimonials";
 import React, { useEffect, useState } from "react";
 // import heroImage from './your-hero-image.jpg';
@@ -77,6 +78,7 @@ const Home = () => {
           </div>
         </section>
       </main>
+      <Teachers />
       <Features />
       <Steps />
       <Testimonials />
