@@ -14,19 +14,82 @@ export default function SignupPage() {
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = useState(false);
+  // const onSignup = async () => {
+  //   try {
+  //     setLoading(true);
+  //     const response = await axios.post("/api/users/signup", user);
+  //     console.log(response.data);
+  //     //   toast.success("Signup Success");
+  //     return router.push("/login");
+  //   } catch (error) {
+  //     // toast.error(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+
+  // new sign in functionality
+
+
+
   const onSignup = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/signup", user);
-      console.log(response.data);
-      //   toast.success("Signup Success");
-      return router.push("/login");
+
+      attemptSignUp(user);
+
     } catch (error) {
-      // toast.error(error.message);
+      console.log("Registration Failed", error.message);
+
+      // added this code for debugging errors from the login api request
+      if (error.response) {
+        console.log('error in response');
+        // Request made but the server responded with an error
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // Request made but no response is received from the server.
+        console.log('erorr in request', error.request);
+      } else {
+        // Error occured while setting up the request
+        console.log('Error here', error);
+      }
     } finally {
       setLoading(false);
     }
   };
+
+
+  function attemptSignUp() {
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json',
+        // 'Authorization': `Bearer ${TOKEN}`
+      }
+    };
+    const apiURL = 'http://127.0.0.1:8000';
+
+    axios.get(apiURL + '/sanctum/csrf-cookie', headers)
+      .then(response => {
+        axios.post(apiURL + "/api/register", user, headers)
+          .then(res => {
+            console.log('credentials submitted', user);
+            if (res.data.datalid) {
+              // console.log('lara reg api says: ', res, res.data.data.token + 'is a new member')
+              console.log('lara reg api says: ', res,
+                'res.data ', res.data,
+                'res.data.status', res.data.status,
+                'res.data.datalid.user', (res.data.datalid.user), 'is a new2 member')
+              // console.log('lara reg api says: ',res.status,  JSON.parse(res.data.data.user) + 'is a newly member')
+              router.push("/dashboard/profile");
+            }
+
+          })
+      });
+    // return router.push("/login");
+  }
 
   useEffect(() => {
     if (

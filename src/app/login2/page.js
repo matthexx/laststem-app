@@ -21,25 +21,9 @@ export default function LoginPage() {
         e.preventDefault(); // Prevent the form from submitting
         try {
             setLoading(true);
-            // axios.post("/api/users/login", user);
-            // added code for testing api
             attemptLogin(user)
         } catch (error) {
-            console.log("Login Failed", error.message);
-
-            // added this code for debugging errors from the login api request
-            if (error.response) {
-                // Request made but the server responded with an error
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // Request made but no response is received from the server.
-                console.log(error.request);
-            } else {
-                // Error occured while setting up the request
-                console.log('Error', error.message);
-            }
+            handleErrors(errror)
         } finally {
             setLoading(false);
         }
@@ -47,7 +31,6 @@ export default function LoginPage() {
 
 
     // attempt login 
-
     function attemptLogin(user) {
         const headers = {
             headers: {
@@ -57,21 +40,33 @@ export default function LoginPage() {
         };
         const apiURL = 'http://127.0.0.1:8000';
 
+        // axios.post("/api/users/login", user);
+        // added code for testing api
         axios.get(apiURL + '/sanctum/csrf-cookie', headers)
             .then(response => {
+
+                // nextjs code starts here
                 axios.post(apiURL + "/api/login", user, headers)
                     .then(res => {
                         console.log('credentials submitted', user,
                             'lara api response', res.data.datalid.token + 'is a logedin member');
 
+                            // check for response data from api call
                         if ($datalid = res.data.datalid) {
-                            router.push("/dashboard/profile");
+
+                            router.push("/dashboard/profile/" + $datalid.user.id
+                            // {
+                            //     user : $datalid.user
+                            // }
+                            );
                             console.log(datalid.status);
                         }
-                        
+
                     }).catch(er => {
                         console.log("Login Failed", error.message);
                     })
+
+                    // next js ends here
             }).catch(er => {
                 console.log("Login Failed", error.message);
             })
@@ -79,6 +74,25 @@ export default function LoginPage() {
         // console.log("Login successful");
         // Redirect to the profile page
         // router.push("/dashboard/profile");
+    }
+
+    // handle errors
+    function handleErrors(error) {
+        console.log("Login Failed", error.message);
+
+        // added this code for debugging errors from the login api request
+        if (error.response) {
+            // Request made but the server responded with an error
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
+        } else if (error.request) {
+            // Request made but no response is received from the server.
+            console.log(error.request);
+        } else {
+            // Error occured while setting up the request
+            console.log('Error', error.message);
+        }
     }
 
     useEffect(() => {

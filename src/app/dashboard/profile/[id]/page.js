@@ -1,4 +1,5 @@
 export default function UserProfile({params}) {
+ console.log('params: ', params);
  
     return (
     <div>
